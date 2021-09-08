@@ -4,6 +4,7 @@ const tasks = list.children;
 const arr = [...tasks];
 const addBTN = document.getElementsByClassName("addBTN")[0];
 const clearBTN = document.getElementsByClassName("clearBTN")[0];
+const deleteBtn = document.getElementsByClassName("deleteBTN")[0];
 
 const addNewTask = () => {
   if (input.value.length > 0) {
@@ -28,14 +29,24 @@ input.addEventListener("keyup", function (event) {
 const clearAll = () => (list.innerHTML = null);
 clearBTN.addEventListener("click", clearAll);
 
+// const deleteTask = () => {
+//   for (const elem of arr) {
+//     elem.addEventListener("dblclick", function () {
+//       elem.remove();
+//     });
+//   }
+// };
+
 const deleteTask = () => {
-  for (const elem of arr) {
-    elem.addEventListener("dblclick", function () {
-      elem.remove();
-    });
-  }
-};
-list.addEventListener("mouseover", deleteTask);
+    const links = document.getElementsByTagName("a")
+    const arr = [...links]
+    for (const elem of arr) {
+        if (elem.style.backgroundColor === "lightgreen")
+        elem.remove()
+
+}
+}
+deleteBtn.addEventListener("click", deleteTask);
 
 
 const finishTask = () => {
