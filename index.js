@@ -6,6 +6,7 @@ const deleteBTN = document.getElementsByClassName("deleteBTN")[0];
 const saveBTN = document.getElementsByClassName("saveBTN")[0];
 const submitBTN = document.getElementsByClassName("submitBTN")[0];
 const buttons = document.getElementsByClassName("buttons")[0]
+const listContainer = document.getElementsByClassName("listContainer")[0]
 
 const clearAll = () => {
   list.innerHTML = null;
@@ -42,12 +43,12 @@ list.addEventListener("mouseout", finishTask);
 const addNewList = () => {
     const div = document.createElement("div")
     list.append(div)
-    const listname = document.createElement("h1")
+    const listname = document.createElement("h3")
     listname.style.color = "white"
     listname.append(mainListInput.value)
     div.append(listname)
     const deleteListBTN = document.createElement("button")
-    deleteListBTN.className = "btn btn-warning"
+    deleteListBTN.className = "deleteList btn btn-warning"
     deleteListBTN.innerHTML = "Delete list"
     div.append(deleteListBTN)
     deleteListBTN.addEventListener("click", () => {
@@ -78,15 +79,21 @@ const addNewList = () => {
     };
     addBTN.addEventListener("click", addNewTask);
 
+
   }
+  
 submitBTN.addEventListener("click", addNewList);
+
 
 saveBTN.addEventListener("click", () => {
   localStorage.setItem("tasks", list.innerHTML);
 });
+
 const loadTasks = () => {
   if (localStorage.getItem("tasks")) {
+
     list.innerHTML = localStorage.getItem("tasks");
   }
 };
+
 loadTasks();
